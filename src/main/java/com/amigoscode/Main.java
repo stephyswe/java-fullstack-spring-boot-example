@@ -19,7 +19,7 @@ public class Main {
                 new CustomerController(customerService);
          */
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class, args);
-        printBeans(applicationContext);
+        // printBeans(applicationContext);
     }
 
     @Bean("foo")
