@@ -14,12 +14,12 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/api/v1/customer")
+    @GetMapping("/api/v1/customers")
     public List<Customer> getCustomers() {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/api/v1/customers/{customerId}")
+    @GetMapping("/api/v1/customers/{id}")
     public Customer getCustomer(
             @PathVariable("id") Integer customerId) {
         return customerService.getCustomer(customerId);
