@@ -2,10 +2,7 @@ package com.amigoscode;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +47,16 @@ public class Main {
     @GetMapping("/api/v1/customer")
     public List<Customer> getCustomers() {
         return customers;
+    }
+
+    @GetMapping("/api/v1/customers/{id}")
+    public Customer getCustomers(@PathVariable("id") Integer customerId) {
+        Customer customer = customers.stream()
+                .filter(c -> c.id.equals(customerId))
+                .findFirst()
+                .orElseThrow(
+                        () -> new IllegalArgumentException("customer with id [%s] not found".formatted((customerId))));
+        return customer;
     }
 
     static class Customer {
