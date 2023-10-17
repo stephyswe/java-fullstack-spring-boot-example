@@ -10,6 +10,8 @@ import java.util.List;
 public class CustomerController {
     private final CustomerService customerService;
 
+    // @Autowired (old)
+    // @Inject (juice-framework)
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
